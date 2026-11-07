@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patina Logo - Profile Picture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      padding: 40px;
+    }
+
+    h2 {
+      color: #888;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Square Profile Picture Version */
+    .profile-pic {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(145deg, #1a1612 0%, #0d0b09 100%);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 
+        0 0 60px rgba(212, 175, 55, 0.2),
+        inset 0 0 80px rgba(0,0,0,0.5);
+    }
+
+    .profile-pic::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      color: #d4af37;
+      letter-spacing: 12px;
+      text-shadow: 
+        0 0 30px rgba(212, 175, 55, 0.5),
+        0 0 60px rgba(212, 175, 55, 0.3);
+      padding-left: 12px;
+    }
+
+    .logo-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      margin-top: -5px;
+    }
+
+    /* Minimal Version */
+    .profile-pic-minimal {
+      width: 400px;
+      height: 400px;
+      background: #0a0a0a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 200px;
+      font-weight: 500;
+      color: #d4af37;
+      text-shadow: 
+        0 0 40px rgba(212, 175, 55, 0.6),
+        0 0 80px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Square version for actual profile */
+    .profile-square {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(145deg, #1a1612 0%, #0a0908 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .profile-square .logo-text {
+      font-size: 72px;
+      letter-spacing: 10px;
+    }
+
+    .profile-square .logo-sub {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
+
+    /* Instructions */
+    .instructions {
+      background: #222;
+      padding: 30px 40px;
+      border-radius: 10px;
+      max-width: 500px;
+      color: #aaa;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .instructions h3 {
+      color: #d4af37;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .instructions ol {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="logo-container">
+    <h2>Option 1: Full Name (Recommended)</h2>
+    <div class="profile-pic">
+      <div class="logo-text">PATINA</div>
+      <div class="logo-tagline">Heritage</div>
+    </div>
+  </div>
+
+  <div class="logo-container">
+    <h2>Option 2: Letter Mark</h2>
+    <div class="profile-pic-minimal">
+      <div class="logo-letter">P</div>
+    </div>
+  </div>
+
+  <div class="logo-container">
+    <h2>Option 3: Square Format</h2>
+    <div class="profile-square">
+      <div class="logo-text">PATINA</div>
+      <div class="logo-sub">Chittagong</div>
+    </div>
+  </div>
+
+  <div class="instructions">
+    <h3>How to Use:</h3>
+    <ol>
+      <li>Right-click on the logo you like</li>
+      <li>Select "Take Screenshot" or use your screenshot tool</li>
+      <li>Crop to the logo only</li>
+      <li>Upload as Instagram profile picture</li>
+    </ol>
+  </div>
+
+</body>
+</html>

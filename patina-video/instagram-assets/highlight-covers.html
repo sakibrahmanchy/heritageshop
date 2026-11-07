@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patina - Instagram Highlight Covers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1a1a1a;
+      min-height: 100vh;
+      padding: 40px;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: #d4af37;
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 24px;
+      letter-spacing: 5px;
+    }
+
+    .covers-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cover-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .cover {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #1a1612 0%, #0a0908 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50%;
+    }
+
+    .cover-icon {
+      font-size: 50px;
+      margin-bottom: 5px;
+    }
+
+    .cover-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #d4af37;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .cover-label {
+      color: #666;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Icon styles using Unicode/Emoji alternatives */
+    .icon-clocks::before { content: '🕐'; font-size: 45px; }
+    .icon-brass::before { content: '✧'; font-size: 50px; color: #d4af37; }
+    .icon-nautical::before { content: '⚓'; font-size: 45px; }
+    .icon-lamps::before { content: '🏮'; font-size: 45px; }
+    .icon-new::before { content: '✦'; font-size: 50px; color: #d4af37; }
+    .icon-sold::before { content: '✓'; font-size: 50px; color: #d4af37; }
+
+    /* Minimal text-only version */
+    .cover-minimal .cover-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
+
+    .instructions {
+      background: #222;
+      padding: 30px 40px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 50px auto 0;
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .instructions h3 {
+      color: #d4af37;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  
+  <h1>HIGHLIGHT COVERS</h1>
+
+  <div class="covers-grid">
+    
+    <div class="cover-item">
+      <div class="cover">
+        <span class="icon-clocks"></span>
+        <span class="cover-text">Clocks</span>
+      </div>
+      <span class="cover-label">Antique Clocks</span>
+    </div>
+
+    <div class="cover-item">
+      <div class="cover">
+        <span class="icon-brass"></span>
+        <span class="cover-text">Brass</span>
+      </div>
+      <span class="cover-label">Brass Collection</span>
+    </div>
+
+    <div class="cover-item">
+      <div class="cover">
+        <span class="icon-nautical"></span>
+        <span class="cover-text">Nautical</span>
+      </div>
+      <span class="cover-label">Ship & Marine</span>
+    </div>
+
+    <div class="cover-item">
+      <div class="cover">
+        <span class="icon-lamps"></span>
+        <span class="cover-text">Lamps</span>
+      </div>
+      <span class="cover-label">Vintage Lamps</span>
+    </div>
+
+    <div class="cover-item">
+      <div class="cover">
+        <span class="icon-new"></span>
+        <span class="cover-text">New</span>
+      </div>
+      <span class="cover-label">New Arrivals</span>
+    </div>
+
+    <div class="cover-item">
+      <div class="cover">
+        <span class="icon-sold"></span>
+        <span class="cover-text">Sold</span>
+      </div>
+      <span class="cover-label">Sold Items</span>
+    </div>
+
+  </div>
+
+  <div class="covers-grid" style="margin-top: 60px;">
+    <h2 style="width: 100%; text-align: center; color: #888; font-size: 14px; letter-spacing: 3px; margin-bottom: 20px;">MINIMAL VERSION (TEXT ONLY)</h2>
+    
+    <div class="cover-item">
+      <div class="cover cover-minimal">
+        <span class="cover-text">Clocks</span>
+      </div>
+    </div>
+
+    <div class="cover-item">
+      <div class="cover cover-minimal">
+        <span class="cover-text">Brass</span>
+      </div>
+    </div>
+
+    <div class="cover-item">
+      <div class="cover cover-minimal">
+        <span class="cover-text">Lamps</span>
+      </div>
+    </div>
+
+    <div class="cover-item">
+      <div class="cover cover-minimal">
+        <span class="cover-text">About</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="instructions">
+    <h3>How to Use:</h3>
+    <ol>
+      <li>Screenshot each cover you want</li>
+      <li>Crop to just the circle</li>
+      <li>Go to your Instagram highlight</li>
+      <li>Tap "Edit Highlight"</li>
+      <li>Tap "Edit Cover"</li>
+      <li>Upload the cropped image</li>
+    </ol>
+  </div>
+
+</body>
+</html>

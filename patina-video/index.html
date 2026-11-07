@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patina - Brand Video</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Bebas+Neue&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #000;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-container {
+      width: 1080px;
+      height: 1920px;
+      transform: scale(0.48);
+      transform-origin: center center;
+      background: #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Luxury dark gradient background */
+    .luxury-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+        linear-gradient(180deg, #0d0d0d 0%, #1a1812 30%, #0d0d0d 70%, #0a0a0a 100%);
+      z-index: 0;
+    }
+
+    /* Animated golden particles */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      background: radial-gradient(circle, #d4af37 0%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0;
+      filter: blur(1px);
+    }
+
+    /* Light flare effects */
+    .light-flare {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 60%);
+      border-radius: 50%;
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .flare-1 { top: -200px; right: -200px; }
+    .flare-2 { bottom: -200px; left: -200px; }
+
+    .flare-1.active { animation: flarePulse 4s ease-in-out infinite; }
+    .flare-2.active { animation: flarePulse 4s ease-in-out infinite 2s; }
+
+    @keyframes flarePulse {
+      0%, 100% { opacity: 0; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* Slides */
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 10;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* ========== INTRO SLIDE ========== */
+    .intro-slide {
+      background: transparent;
+    }
+
+    .intro-content {
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 200px;
+      color: #d4af37;
+      letter-spacing: 40px;
+      text-transform: uppercase;
+      position: relative;
+      opacity: 0;
+      transform: scale(1.5);
+      text-shadow: 
+        0 0 60px rgba(212, 175, 55, 0.6),
+        0 0 120px rgba(212, 175, 55, 0.4),
+        0 0 180px rgba(212, 175, 55, 0.2);
+      padding-left: 40px;
+    }
+
+    .brand-name.animate {
+      animation: brandReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes brandReveal {
+      0% { opacity: 0; transform: scale(1.8); filter: blur(30px); letter-spacing: 80px; }
+      60% { filter: blur(0); }
+      100% { opacity: 1; transform: scale(1); filter: blur(0); letter-spacing: 40px; }
+    }
+
+    .brand-name::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+      transform: translateX(-150%);
+    }
+
+    .brand-name.shimmer::before {
+      animation: shimmer 1.2s ease-in-out;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-150%); }
+      100% { transform: translateX(150%); }
+    }
+
+    .brand-line-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      margin: 60px 0;
+      opacity: 0;
+    }
+
+    .brand-line-container.animate {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .brand-line {
+      width: 180px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      transform: scaleX(0);
+    }
+
+    .brand-line.animate {
+      animation: lineExpand 1s ease forwards;
+    }
+
+    @keyframes lineExpand {
+      to { transform: scaleX(1); }
+    }
+
+    .brand-diamond {
+      width: 16px;
+      height: 16px;
+      background: #d4af37;
+      transform: rotate(45deg) scale(0);
+      box-shadow: 
+        0 0 30px rgba(212, 175, 55, 1),
+        0 0 60px rgba(212, 175, 55, 0.6);
+    }
+
+    .brand-diamond.animate {
+      animation: diamondPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    }
+
+    @keyframes diamondPop {
+      to { transform: rotate(45deg) scale(1); }
+    }
+
+    .tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 38px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 16px;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(40px);
+      text-align: center;
+      padding: 0 40px;
+    }
+
+    .tagline.animate {
+      animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* ========== PRODUCT SLIDES ========== */
+    .product-slide {
+      background: #0a0a0a;
+    }
+
+    .product-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Dark themed background for product */
+    .product-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 70%),
+        linear-gradient(180deg, #0d0d0d 0%, #151515 50%, #0a0a0a 100%);
+    }
+
+    .product-image-container {
+      position: relative;
+      width: 95%;
+      height: 85%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .product-image {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: 85%;
+      object-fit: contain;
+      filter: brightness(1.2) contrast(1.15) saturate(1.2) drop-shadow(0 30px 80px rgba(0,0,0,0.9)) drop-shadow(0 0 60px rgba(212, 175, 55, 0.2));
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    .product-slide.active .product-image {
+      animation: productReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes productReveal {
+      0% { 
+        opacity: 0; 
+        transform: scale(0.7) translateY(50px); 
+        filter: blur(15px) brightness(1.15) contrast(1.1) saturate(1.15) drop-shadow(0 20px 60px rgba(0,0,0,0.8)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.15)); 
+      }
+      100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+        filter: blur(0) brightness(1.15) contrast(1.1) saturate(1.15) drop-shadow(0 20px 60px rgba(0,0,0,0.8)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.15)); 
+      }
+    }
+
+    /* Slow zoom during display */
+    .product-slide.active .product-image {
+      animation: productReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+                 slowZoom 4s ease-out 1.2s forwards;
+    }
+
+    @keyframes slowZoom {
+      0% { transform: scale(1) translateY(0); }
+      100% { transform: scale(1.06) translateY(0); }
+    }
+
+    /* Golden glow behind product */
+    .product-glow {
+      position: absolute;
+      width: 70%;
+      height: 50%;
+      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+      z-index: 3;
+      opacity: 0;
+      filter: blur(40px);
+    }
+
+    .product-slide.active .product-glow {
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); }
+    }
+
+    /* Decorative frame */
+    .product-frame {
+      position: absolute;
+      top: 80px;
+      left: 80px;
+      right: 80px;
+      bottom: 80px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      z-index: 10;
+      opacity: 0;
+    }
+
+    .product-slide.active .product-frame {
+      animation: frameReveal 0.8s ease forwards 0.6s;
+    }
+
+    @keyframes frameReveal {
+      0% { opacity: 0; transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Corner decorations */
+    .corner {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      z-index: 11;
+      opacity: 0;
+    }
+
+    .corner::before, .corner::after {
+      content: '';
+      position: absolute;
+      background: #d4af37;
+    }
+
+    .corner-tl { top: 70px; left: 70px; }
+    .corner-tl::before { top: 0; left: 0; width: 30px; height: 2px; }
+    .corner-tl::after { top: 0; left: 0; width: 2px; height: 30px; }
+
+    .corner-tr { top: 70px; right: 70px; }
+    .corner-tr::before { top: 0; right: 0; width: 30px; height: 2px; }
+    .corner-tr::after { top: 0; right: 0; width: 2px; height: 30px; }
+
+    .corner-bl { bottom: 70px; left: 70px; }
+    .corner-bl::before { bottom: 0; left: 0; width: 30px; height: 2px; }
+    .corner-bl::after { bottom: 0; left: 0; width: 2px; height: 30px; }
+
+    .corner-br { bottom: 70px; right: 70px; }
+    .corner-br::before { bottom: 0; right: 0; width: 30px; height: 2px; }
+    .corner-br::after { bottom: 0; right: 0; width: 2px; height: 30px; }
+
+    .product-slide.active .corner {
+      animation: cornerReveal 0.5s ease forwards 0.8s;
+    }
+
+    @keyframes cornerReveal {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* ========== TRANSITION EFFECTS ========== */
+    .transition-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .transition-wipe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, 
+        #d4af37 0%, 
+        #f4d03f 30%, 
+        #d4af37 50%,
+        #c9a227 70%,
+        #d4af37 100%);
+      transform: translateX(-100%);
+    }
+
+    .transition-overlay.animate .transition-wipe {
+      animation: wipeIn 0.6s cubic-bezier(0.7, 0, 0.3, 1) forwards,
+                 wipeOut 0.6s cubic-bezier(0.7, 0, 0.3, 1) 0.6s forwards;
+    }
+
+    @keyframes wipeIn {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(0%); }
+    }
+
+    @keyframes wipeOut {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Flash effect */
+    .flash-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .flash-overlay.active {
+      animation: flash 0.3s ease-out;
+    }
+
+    @keyframes flash {
+      0% { opacity: 0.8; }
+      100% { opacity: 0; }
+    }
+
+    /* ========== OUTRO SLIDE ========== */
+    .outro-slide {
+      background: transparent;
+    }
+
+    .outro-content {
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .outro-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 180px;
+      color: #d4af37;
+      letter-spacing: 35px;
+      text-transform: uppercase;
+      opacity: 0;
+      text-shadow: 
+        0 0 60px rgba(212, 175, 55, 0.6),
+        0 0 120px rgba(212, 175, 55, 0.4);
+      padding-left: 35px;
+    }
+
+    .outro-brand.animate {
+      animation: outroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes outroReveal {
+      0% { opacity: 0; letter-spacing: 100px; filter: blur(15px); padding-left: 100px; }
+      100% { opacity: 1; letter-spacing: 35px; filter: blur(0); padding-left: 35px; }
+    }
+
+    .outro-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 14px;
+      text-transform: uppercase;
+      margin-top: 20px;
+      opacity: 0;
+    }
+
+    .outro-sub.animate {
+      animation: fadeSlideUp 1s ease forwards;
+    }
+
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .outro-divider {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d4af37, transparent);
+      margin: 60px 0;
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .outro-divider.animate {
+      animation: dividerExpand 0.8s ease forwards;
+    }
+
+    @keyframes dividerExpand {
+      to { opacity: 1; transform: scaleX(1); }
+    }
+
+    .outro-location {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px;
+      font-weight: 500;
+      color: #d4af37;
+      letter-spacing: 25px;
+      text-transform: uppercase;
+      opacity: 0;
+      padding-left: 25px;
+    }
+
+    .outro-location.animate {
+      animation: glowIn 1.2s ease forwards;
+    }
+
+    @keyframes glowIn {
+      0% { opacity: 0; text-shadow: none; }
+      100% { 
+        opacity: 1; 
+        text-shadow: 
+          0 0 40px rgba(212, 175, 55, 0.6),
+          0 0 80px rgba(212, 175, 55, 0.3);
+      }
+    }
+
+    .outro-handle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: 8px;
+      margin-top: 80px;
+      opacity: 0;
+      padding: 25px 60px;
+      border: 2px solid rgba(212, 175, 55, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .outro-handle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+    }
+
+    .outro-handle.animate {
+      animation: handleReveal 1s ease forwards;
+    }
+
+    .outro-handle.animate::before {
+      animation: handleShimmer 2s ease-in-out infinite 1s;
+    }
+
+    @keyframes handleReveal {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes handleShimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    /* ========== PLAY OVERLAY ========== */
+    .play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      cursor: pointer;
+    }
+
+    .play-overlay.hidden {
+      display: none;
+    }
+
+    .play-button {
+      width: 160px;
+      height: 160px;
+      border: 2px solid #d4af37;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .play-button::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      right: -15px;
+      bottom: -15px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .play-button::after {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: -30px;
+      right: -30px;
+      bottom: -30px;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite 0.5s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.5; }
+    }
+
+    .play-button:hover {
+      background: rgba(212, 175, 55, 0.15);
+      transform: scale(1.1);
+      box-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
+    }
+
+    .play-icon {
+      width: 0;
+      height: 0;
+      border-left: 50px solid #d4af37;
+      border-top: 30px solid transparent;
+      border-bottom: 30px solid transparent;
+      margin-left: 15px;
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+    }
+
+    .play-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 10px;
+      text-transform: uppercase;
+      margin-top: 60px;
+    }
+
+    /* Subtle grain overlay */
+    .grain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 150;
+      opacity: 0.03;
+    }
+
+    /* Audio visualizer bars (decorative) */
+    .audio-bars {
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 20;
+      opacity: 0;
+    }
+
+    .audio-bars.visible {
+      opacity: 1;
+    }
+
+    .audio-bar {
+      width: 4px;
+      height: 20px;
+      background: rgba(212, 175, 55, 0.6);
+      border-radius: 2px;
+    }
+
+    .audio-bars.playing .audio-bar {
+      animation: audioBar 0.5s ease-in-out infinite alternate;
+    }
+
+    .audio-bar:nth-child(1) { animation-delay: 0s; }
+    .audio-bar:nth-child(2) { animation-delay: 0.1s; }
+    .audio-bar:nth-child(3) { animation-delay: 0.2s; }
+    .audio-bar:nth-child(4) { animation-delay: 0.15s; }
+    .audio-bar:nth-child(5) { animation-delay: 0.05s; }
+
+    @keyframes audioBar {
+      0% { height: 20px; }
+      100% { height: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container" id="videoContainer">
+    <!-- Background Music -->
+    <audio id="bgMusic" preload="auto">
+      <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Luxury Background -->
+    <div class="luxury-bg"></div>
+    
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Light Flares -->
+    <div class="light-flare flare-1" id="flare1"></div>
+    <div class="light-flare flare-2" id="flare2"></div>
+
+    <!-- Transition Overlay -->
+    <div class="transition-overlay" id="transitionOverlay">
+      <div class="transition-wipe"></div>
+    </div>
+
+    <!-- Flash Overlay -->
+    <div class="flash-overlay" id="flashOverlay"></div>
+
+    <!-- Play Overlay -->
+    <div class="play-overlay" id="playOverlay">
+      <div class="play-button">
+        <div class="play-icon"></div>
+      </div>
+      <div class="play-text">Click to Play</div>
+    </div>
+
+    <!-- Intro Slide -->
+    <div class="slide intro-slide" id="slide-intro">
+      <div class="intro-content">
+        <div class="brand-name" id="brandName">PATINA</div>
+        <div class="brand-line-container" id="brandLineContainer">
+          <div class="brand-line" id="brandLineLeft"></div>
+          <div class="brand-diamond" id="brandDiamond"></div>
+          <div class="brand-line" id="brandLineRight"></div>
+        </div>
+        <div class="tagline" id="tagline">Timeless Pieces • Curated for Collectors</div>
+      </div>
+    </div>
+
+    <!-- Product Slides - Only clean shots without hands -->
+    <div class="slide product-slide" id="slide-1">
+      <div class="product-wrapper">
+        <div class="product-bg"></div>
+        <div class="product-glow"></div>
+        <div class="product-image-container">
+          <img class="product-image" src="assets_nobg/04580472-7538-4b64-8fb0-863859e9b14a.png" alt="Elephant Clock">
+        </div>
+      </div>
+      <div class="product-frame"></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+    </div>
+
+    <div class="slide product-slide" id="slide-2">
+      <div class="product-wrapper">
+        <div class="product-bg"></div>
+        <div class="product-glow"></div>
+        <div class="product-image-container">
+          <img class="product-image" src="assets_nobg/f6eeac79-e2c9-4f9e-a923-112bb5960ab2.png" alt="Colonial Figure Clock">
+        </div>
+      </div>
+      <div class="product-frame"></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+    </div>
+
+    <div class="slide product-slide" id="slide-3">
+      <div class="product-wrapper">
+        <div class="product-bg"></div>
+        <div class="product-glow"></div>
+        <div class="product-image-container">
+          <img class="product-image" src="assets_nobg/de427794-15cd-4721-8a10-e8896ffcf3a7.png" alt="Diana Clock">
+        </div>
+      </div>
+      <div class="product-frame"></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+    </div>
+
+    <div class="slide product-slide" id="slide-4">
+      <div class="product-wrapper">
+        <div class="product-bg"></div>
+        <div class="product-glow"></div>
+        <div class="product-image-container">
+          <img class="product-image" src="assets_nobg/16f82807-3343-441d-9e66-48e3c11dfdf1.png" alt="Candelabra">
+        </div>
+      </div>
+      <div class="product-frame"></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+    </div>
+
+    <div class="slide product-slide" id="slide-5">
+      <div class="product-wrapper">
+        <div class="product-bg"></div>
+        <div class="product-glow"></div>
+        <div class="product-image-container">
+          <img class="product-image" src="assets_nobg/999d33ac-695d-4fe7-8904-96adc5778ad5.png" alt="Brass Dallah">
+        </div>
+      </div>
+      <div class="product-frame"></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+    </div>
+
+    <div class="slide product-slide" id="slide-6">
+      <div class="product-wrapper">
+        <div class="product-bg"></div>
+        <div class="product-glow"></div>
+        <div class="product-image-container">
+          <img class="product-image" src="assets_nobg/556522ec-9893-482c-b2de-0d4d0b6a1575.png" alt="Ship Lantern">
+        </div>
+      </div>
+      <div class="product-frame"></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+    </div>
+
+    <div class="slide product-slide" id="slide-7">
+      <div class="product-wrapper">
+        <div class="product-bg"></div>
+        <div class="product-glow"></div>
+        <div class="product-image-container">
+          <img class="product-image" src="assets_nobg/aca18ca6-7df1-4ed1-acd9-25573c4158d2.png" alt="Oil Lamp">
+        </div>
+      </div>
+      <div class="product-frame"></div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+    </div>
+
+    <!-- Outro Slide -->
+    <div class="slide outro-slide" id="slide-outro">
+      <div class="outro-content">
+        <div class="outro-brand" id="outroBrand">PATINA</div>
+        <div class="outro-sub" id="outroSub">Heritage & Collectibles</div>
+        <div class="outro-divider" id="outroDivider"></div>
+        <div class="outro-location" id="outroLocation">Chittagong</div>
+        <div class="outro-handle" id="outroHandle">@patina.ctg</div>
+      </div>
+    </div>
+
+    <!-- Audio Visualizer -->
+    <div class="audio-bars" id="audioBars">
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+    </div>
+
+    <!-- Grain -->
+    <div class="grain" id="grain"></div>
+  </div>
+
+  <script>
+    // Create grain texture
+    const grainCanvas = document.createElement('canvas');
+    grainCanvas.width = 256;
+    grainCanvas.height = 256;
+    const grainCtx = grainCanvas.getContext('2d');
+    
+    function generateGrain() {
+      const imageData = grainCtx.createImageData(256, 256);
+      for (let i = 0; i < imageData.data.length; i += 4) {
+        const value = Math.random() * 255;
+        imageData.data[i] = value;
+        imageData.data[i + 1] = value;
+        imageData.data[i + 2] = value;
+        imageData.data[i + 3] = 255;
+      }
+      grainCtx.putImageData(imageData, 0, 0);
+      document.getElementById('grain').style.backgroundImage = `url(${grainCanvas.toDataURL()})`;
+    }
+    generateGrain();
+    setInterval(generateGrain, 80);
+
+    // Create floating particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 40; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      const size = 3 + Math.random() * 6;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animation = `particleFloat ${8 + Math.random() * 12}s ease-in-out infinite`;
+      particle.style.animationDelay = Math.random() * 8 + 's';
+      particlesContainer.appendChild(particle);
+    }
+
+    // Add particle animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes particleFloat {
+        0%, 100% { 
+          opacity: 0; 
+          transform: translateY(0) scale(0);
+        }
+        15% {
+          opacity: 0.7;
+          transform: translateY(-100px) scale(1);
+        }
+        85% {
+          opacity: 0.7;
+          transform: translateY(-400px) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-500px) scale(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Slide configuration
+    const slides = [
+      { id: 'slide-intro', duration: 5500, type: 'intro' },
+      { id: 'slide-1', duration: 3500, type: 'product' },
+      { id: 'slide-2', duration: 3500, type: 'product' },
+      { id: 'slide-3', duration: 3500, type: 'product' },
+      { id: 'slide-4', duration: 3500, type: 'product' },
+      { id: 'slide-5', duration: 3500, type: 'product' },
+      { id: 'slide-6', duration: 3500, type: 'product' },
+      { id: 'slide-7', duration: 3500, type: 'product' },
+      { id: 'slide-outro', duration: 7000, type: 'outro' }
+    ];
+
+    let currentSlide = 0;
+    const bgMusic = document.getElementById('bgMusic');
+
+    function hideAllSlides() {
+      slides.forEach(s => {
+        document.getElementById(s.id).classList.remove('active');
+      });
+    }
+
+    function triggerTransition(callback) {
+      const overlay = document.getElementById('transitionOverlay');
+      const flash = document.getElementById('flashOverlay');
+      
+      overlay.classList.add('animate');
+      
+      setTimeout(() => {
+        flash.classList.add('active');
+        callback();
+      }, 600);
+      
+      setTimeout(() => {
+        overlay.classList.remove('animate');
+        flash.classList.remove('active');
+      }, 1200);
+    }
+
+    function showSlide(index, withTransition = false) {
+      const show = () => {
+        hideAllSlides();
+        const slide = slides[index];
+        const el = document.getElementById(slide.id);
+        el.classList.add('active');
+
+        // Activate light flares
+        document.getElementById('flare1').classList.add('active');
+        document.getElementById('flare2').classList.add('active');
+
+        if (slide.type === 'intro') {
+          animateIntro();
+        } else if (slide.type === 'outro') {
+          animateOutro();
+        }
+      };
+
+      if (withTransition) {
+        triggerTransition(show);
+      } else {
+        show();
+      }
+    }
+
+    function animateIntro() {
+      const brandName = document.getElementById('brandName');
+      const brandLineContainer = document.getElementById('brandLineContainer');
+      const brandLineLeft = document.getElementById('brandLineLeft');
+      const brandLineRight = document.getElementById('brandLineRight');
+      const brandDiamond = document.getElementById('brandDiamond');
+      const tagline = document.getElementById('tagline');
+
+      setTimeout(() => {
+        brandName.classList.add('animate');
+      }, 400);
+
+      setTimeout(() => {
+        brandName.classList.add('shimmer');
+      }, 1800);
+
+      setTimeout(() => {
+        brandLineContainer.classList.add('animate');
+        brandLineLeft.classList.add('animate');
+        brandLineRight.classList.add('animate');
+      }, 2200);
+
+      setTimeout(() => {
+        brandDiamond.classList.add('animate');
+      }, 2800);
+
+      setTimeout(() => {
+        tagline.classList.add('animate');
+      }, 3400);
+    }
+
+    function animateOutro() {
+      const brand = document.getElementById('outroBrand');
+      const sub = document.getElementById('outroSub');
+      const divider = document.getElementById('outroDivider');
+      const location = document.getElementById('outroLocation');
+      const handle = document.getElementById('outroHandle');
+
+      setTimeout(() => brand.classList.add('animate'), 400);
+      setTimeout(() => sub.classList.add('animate'), 1200);
+      setTimeout(() => divider.classList.add('animate'), 2000);
+      setTimeout(() => location.classList.add('animate'), 2800);
+      setTimeout(() => handle.classList.add('animate'), 3800);
+    }
+
+    function nextSlide() {
+      currentSlide++;
+      if (currentSlide < slides.length) {
+        const useTransition = currentSlide > 0;
+        showSlide(currentSlide, useTransition);
+        setTimeout(nextSlide, slides[currentSlide].duration);
+      } else {
+        // Video ended - fade out music
+        const fadeOut = setInterval(() => {
+          if (bgMusic.volume > 0.1) {
+            bgMusic.volume -= 0.1;
+          } else {
+            bgMusic.pause();
+            clearInterval(fadeOut);
+          }
+        }, 200);
+      }
+    }
+
+    function startVideo() {
+      document.getElementById('playOverlay').classList.add('hidden');
+      
+      // Show audio bars
+      const audioBars = document.getElementById('audioBars');
+      audioBars.classList.add('visible', 'playing');
+      
+      // Start music
+      bgMusic.volume = 0.7;
+      bgMusic.play().catch(e => console.log('Audio play failed:', e));
+      
+      // Start slideshow
+      showSlide(0);
+      setTimeout(nextSlide, slides[0].duration);
+    }
+
+    // Click to start
+    document.getElementById('playOverlay').addEventListener('click', startVideo);
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' && !document.getElementById('playOverlay').classList.contains('hidden')) {
+        e.preventDefault();
+        startVideo();
+      }
+    });
+  </script>
+</body>
+</html>
